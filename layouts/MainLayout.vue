@@ -1,9 +1,12 @@
 <script setup lang="ts">
+import { useUserStore } from "@/stores/user.store"
 
 const client = useSupabaseClient();
 const user = useSupabaseUser()
 const errorMsg = ref('');
 const router = useRouter();
+
+const userStore = useUserStore();
 
 let isAccountMenu = ref(false)
 let searchItem = ref('')
@@ -146,16 +149,14 @@ async function logout() {
 		</div>
 
 		<!--Loading State -->
-		<Loading  />  <!--v-if="userStore.isLoading" -->
+		<Loading v-if="userStore.isLoading" />
 
 		<!-- Content -->
 		<div class="lg:pt-[150px] md:pt-[130px] pt-[80px]" />
 		<slot />
 
-		<Footer /> <!-- v-if="!userStore.isLoading" -->
+		<Footer v-if="!userStore.isLoading" />
 	</section>
 </template>
 
-<style scoped>
-
-</style>
+<style scoped></style>
