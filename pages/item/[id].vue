@@ -42,7 +42,7 @@ watchEffect(() => {
 </script>
 
 <template>
-	<MainLayout>
+	<main-layout>
 		<div id="ItemPage" class="mt-4 max-w-[1200px] mx-auto px-2">
 			<div class="md:flex gap-4 justify-between mx-auto w-full">
 				<!-- Images -->
@@ -110,7 +110,7 @@ watchEffect(() => {
 
 			</div>
 		</div>
-	</MainLayout>
+	</main-layout>
 </template>
 
 <style scoped></style>

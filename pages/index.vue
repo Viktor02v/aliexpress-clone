@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import MainLayout from '~/layouts/MainLayout.vue';
 
-const products = [
+const products = ref([
 	{
 		id: 1,
 		title: "title 1",
@@ -82,11 +82,11 @@ const products = [
 		price: 7890,
 		rate: 4.6,
 	}
-] 
+])
 </script>
 
 <template>
-	<MainLayout>
+	<main-layout>
 		<div d="IndexPage" class="mt-5 max-w-[1200px] h-full mx-auto px-2">
 
 			<div class="grid xl:grid-cols-6 lg:grid-cols-5 md:grid-cols-4 sm:grid-cols-3 grid-cols-2 gap-4">
@@ -96,5 +96,5 @@ const products = [
 			</div>
 
 		</div>
-	</MainLayout>
+	</main-layout>
 </template>
