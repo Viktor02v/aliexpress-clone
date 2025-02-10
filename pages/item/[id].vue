@@ -1,5 +1,9 @@
 <script setup lang="ts">
 import MainLayout from '~/layouts/MainLayout.vue';
+import { useUserStore } from '@/stores/user.store';
+
+const route = useRoute();
+const userStore = useUserStore();
 
 const images = ref([
 	'',
@@ -10,7 +14,26 @@ const images = ref([
 	'https://picsum.photos/id/19/800/800'
 ])
 
+const isInCart = computed(() => {
+	let res = false
+	userStore.cart.forEach(prod => {
+		if (route.params.id == prod.id) {
+			res = true
+		}
+	})
+	return res
+});
+
 let currentImage = ref()
+
+const priceComputed = computed(() => {
+	return "26,40"
+})
+
+
+const addToCart = () => {
+	alert('Added')
+}
 
 watchEffect(() => {
 	currentImage.value = 'https://picsum.photos/id/77/800/800'
@@ -51,16 +74,40 @@ watchEffect(() => {
 					</div>
 
 
+					<div class="flex items-center justify-start my-2">
+						<Icon name="ic:baseline-star" class="text-[#FF5353]" />
+						<Icon name="ic:baseline-star" class="text-[#FF5353]" />
+						<Icon name="ic:baseline-star" class="text-[#FF5353]" />
+						<Icon name="ic:baseline-star" class="text-[#FF5353]" />
+						<Icon name="ic:baseline-star" class="text-[#FF5353]" />
+						<span class="text-[13px] font-light ml-2">5 213 Reviews 1,000+ orders</span>
+					</div>
+
+					<div class="border-b"></div>
+
+
+					<div class="flex items-center justify-start gap-2 my-2">
+						<div class="text-xl font-bold">$ {{ priceComputed }}</div>
+						<span class="bg-[#F5F5F5] border text-[#C08562] text-[9px] font-semibold px-1.5 rounded-sm">70%
+							off</span>
+					</div>
+
+					<p class="text-[#009A66] text-xs font-semibold pt-1">
+						Free 11-day delivery over $8.28
+					</p>
+
+					<p class="text-[#009A66] text-xs font-semibold pt-1">
+						Free Shipping
+					</p>
+
+					<div class="py-2"></div>
+
+					<button @click="addToCart()" :disabled="isInCart"
+						class="px-6 py-2 rounded-lg text-white text-lg font-semibold bg-gradient-to-r from-[#FF851A] to-[#FFAC2C]">
+						{{ isInCart ? "Is Added" : "Add to Cart" }}
+					</button>
 				</div>
 
-				<div class="flex items-center justify-start my-2">
-					<Icon name="ic:baseline-star" color="#FF5353" />
-					<Icon name="ic:baseline-star" color="#FF5353" />
-					<Icon name="ic:baseline-star" color="#FF5353" />
-					<Icon name="ic:baseline-star" color="#FF5353" />
-					<Icon name="ic:baseline-star" color="#FF5353" />
-					<span class="text-[13px] font-light ml-2">5 213 Reviews 1,000+ orders</span>
-				</div>
 			</div>
 		</div>
 	</MainLayout>
