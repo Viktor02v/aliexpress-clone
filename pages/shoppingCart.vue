@@ -20,6 +20,9 @@ const products = ref([
 		rate: 3.6,
 	},
 ])
+
+const selectedArray  = ref();
+const selectedRadioFunc = ref();
 </script>
 
 <template>
