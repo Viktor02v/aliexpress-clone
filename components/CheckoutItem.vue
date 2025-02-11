@@ -14,8 +14,7 @@ const { product } = toRefs(props)
 			<!-- Description -->
 			<div class="flex items-center ">
 				<!-- Promo_Welcome -->
-				<span
-					class=" bg-[#FD374F] text-white text-[9px] font-semibold px-1.5 rounded-sm min-w-[80px]">
+				<span class=" bg-[#FD374F] text-white text-[9px] font-semibold px-1.5 rounded-sm min-w-[80px]">
 					Welcome Deal
 				</span>
 				<!-- Product_Title -->

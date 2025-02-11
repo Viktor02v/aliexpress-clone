@@ -61,11 +61,10 @@ watch(() => total.value, () => {
 		<div id="CheckoutPage" class="mt-4 max-w-[1200px] mx-auto px-2 ">
 			<div class="md:flex gap-4 justify-between mx-auto w-full">
 
-				<!-- Address_Section -->
+				<!-- Address/Products_Section -->
 				<div class="md:w-[65%]">
 					<div class="bg-white rounded-lg p-4">
 						<div class="text-xl font-semibold mb-2">Shipping Address</div>
-
 
 						<div v-if="false">
 							<!-- Update_Address -->
@@ -110,10 +109,56 @@ watch(() => total.value, () => {
 						</NuxtLink>
 					</div>
 
+					<!-- Products -->
 					<div id="Items" class="bg-white rounded-lg p-4 mt-4">
 						<div v-for="product in products " :key="product.id">
 							<CheckoutItem :product="product" />
 						</div>
+					</div>
+				</div>
+
+
+				<div class="md:hidden block my-4" />
+
+
+				<!-- Order_Section -->
+				<div class="md:w-[35%]">
+					<div id="PlaceOrder" class="bg-white rounded-lg p-4">
+						<div class="text-2xl font-extrabold mb-2">Summary</div>
+
+						<div class="flex items-center justify-between my-4">
+							<div>Total Shipping</div>
+							<div>Free</div>
+						</div>
+
+						<div class="border-t" />
+
+						<!-- Total_Price -->
+						<div class="flex items-center justify-between my-4">
+							<div class="font-semibold">Total</div>
+							<div class="text-2xl font-semibold">
+								$ <span class="font-extrabold">{{ total / 100 }}</span>
+							</div>
+						</div>
+
+						<!-- Payment_Form -->
+						<form @submit.prevent="pay()">
+							<div id="card-element" class="border border-gray-500 p-2 rounded-sm" />
+							<p id="card-error" role="alert" class="text-red-500 text-center font-semibold" />
+
+							<button :disabled="isProcessing" type="submit"
+								:class="[isProcessing ? 'opacity-70' : 'opacity-100', 'mt-4 bg-gradient-to-r from-[#FE630C] to-[#FF3200] w-full text-white text-[21px] font-semibold p-1.5 rounded-full']">
+								<Icon v-if="isProcessing" name="eos-icons:loading" />
+								<div v-else>Place Order</div>
+							</button>
+						</form>
+					</div>
+
+					<div class="bg-white rounded-lg p-4 mt-4">
+						<div class="text-lg font-semibold mb-2 mt-2">
+							AliExpress
+						</div>
+						<p class="my-2">AliExpress keeps your information and payment safe</p>
 					</div>
 				</div>
 			</div>
