@@ -1,12 +1,11 @@
 <script setup lang="ts">
 import { useUserStore } from "@/stores/user.store"
 
+const userStore = useUserStore();
 const client = useSupabaseClient();
 const user = useSupabaseUser()
 const errorMsg = ref('');
 const router = useRouter();
-
-const userStore = useUserStore();
 
 let isAccountMenu = ref(false)
 let searchItem = ref('')

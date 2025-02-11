@@ -2,8 +2,6 @@
 import { defineProps, defineEmits } from 'vue';
 import { useUserStore } from "@/stores/user.store";
 
-const route = useRoute();
-
 const userStore = useUserStore();
 
 const props = defineProps(['product', 'selectedArray'])
