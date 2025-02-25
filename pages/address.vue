@@ -2,17 +2,23 @@
 import MainLayout from '~/layouts/MainLayout.vue'
 import { useUserStore } from '@/stores/user.store'
 
+interface FieldError {
+  type: string
+  message: string
+}
+
 const userStore = useUserStore()
-const contactName = ref('')
-const address = ref(null)
-const zipCode = ref(null)
-const city = ref(null)
-const country = ref(null)
+
+const contactName = ref<string>('')
+const address = ref<string | null>(null)
+const zipCode = ref<string | null>(null)
+const city = ref<string | null>(null)
+const country = ref<string | null>(null)
 
 let isWorking = ref(false)
 let isUpdate = ref(false)
 let currentAddress = ref(null)
-let error = ref<Object | null>(null)
+let error = ref<FieldError | null>(null)
 
 const submit = async () => {
   isWorking.value = true

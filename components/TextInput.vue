@@ -1,9 +1,30 @@
 <script setup lang="ts">
 import { defineProps, defineEmits,toRefs } from 'vue'
 
-const emit = defineEmits(['update:input'])
+const emit = defineEmits(['update:modelValue'])
 
-const props = defineProps(['modelValue', 'placeholder', 'max', 'inputType', 'error'])
+const props = defineProps({
+  modelValue: {
+    type:[String, null],
+    default: ''
+  },
+  placeholder: {
+    type: String,
+    default: ''
+  },
+  max: {
+    type: Number,
+    default: 524288
+  },
+  inputType: {
+    type: String,
+    default: 'text'
+  },
+  error: {
+    type: String,
+    default: ''
+  }
+})
 
 const { modelValue, placeholder, max, inputType, error } = toRefs(props)
 
@@ -11,7 +32,7 @@ let isFocused = ref(false)
 
 const inputComputed = computed({
   get: () => modelValue.value,
-  set: (val) => emit('update:modelValue', val)
+  set: (val:string) => emit('update:modelValue', val)
 })
 </script>
 
