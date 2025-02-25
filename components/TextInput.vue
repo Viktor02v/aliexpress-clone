@@ -1,17 +1,17 @@
 <script setup lang="ts">
-import { defineProps, defineEmits } from 'vue'
+import { defineProps, defineEmits,toRefs } from 'vue'
 
 const emit = defineEmits(['update:input'])
 
-const props = defineProps(['input', 'placeholder', 'max', 'inputType', 'error'])
+const props = defineProps(['modelValue', 'placeholder', 'max', 'inputType', 'error'])
 
-const { input, placeholder, max, inputType, error } = toRefs(props)
+const { modelValue, placeholder, max, inputType, error } = toRefs(props)
 
 let isFocused = ref(false)
 
-const inputComputed = computed(() => {
-  get: () => input.value
-  set: (val) => emit('update:input', val)
+const inputComputed = computed({
+  get: () => modelValue.value,
+  set: (val) => emit('update:modelValue', val)
 })
 </script>
 
@@ -30,7 +30,12 @@ const inputComputed = computed(() => {
         v-model="inputComputed"
       />
     </client-only>
+    <span v-if="error" class="text-red-500 text-[14px] font-semibold">
+      {{ error }}
+    </span>
   </div>
 </template>
 
-<style scoped></style>
+<style scoped>
+
+</style>
