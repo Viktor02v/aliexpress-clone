@@ -27,5 +27,8 @@
     "stripe": "^17.6.0",
     "vue": "latest",
     "vue-router": "latest"
+  },
+  "devDependencies": {
+    "@nuxt/icon": "^1.10.3"
   }
 }

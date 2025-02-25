@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import MainLayout from '~/layouts/MainLayout.vue';
 import { useUserStore } from "@/stores/user.store"
 
 const userStore = useUserStore();
