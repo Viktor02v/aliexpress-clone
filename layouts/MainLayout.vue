@@ -84,7 +84,7 @@ async function logout() {
 
                 <div class="flex items-center gap-1 px-3 mb-3">
                   <NuxtLink
-                    to="/login"
+                    to="/auth"
                     class="bg-[#FF4646] text-center w-full text-[16px] rounded-sm text-white font-semibold p-2"
                   >
                     Login / Register
