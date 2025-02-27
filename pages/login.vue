@@ -18,6 +18,19 @@ async function signIn() {
     errorMsg.value = error.message
   }
 }
+
+async function signUp() {
+  try {
+    const { error } = await client.auth.signUp({
+      email: email.value,
+      password: password.value,
+    });
+    if (error) throw error;
+    router.push('/profile'); // Redirect after successful registration
+  } catch (error) {
+    errorMsg.value = error.message;
+  }
+}
 </script>
 
 <template>
