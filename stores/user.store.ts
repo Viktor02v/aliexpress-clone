@@ -1,10 +1,17 @@
 import { defineStore } from "pinia";
 
+interface UserStore {
+  cart: Array<{ id: number; name: string; quantity: number }>;
+  isMenuOverlay: boolean;
+  isLoading: boolean;
+  checkout: Array<{}>;
+}
+
 export const useUserStore = defineStore('user', {
-	state: () => ({
+  state: (): UserStore => ({
+    cart: [],
 		isMenuOverlay:false,
 		isLoading:false,
-		cart:[],
 		checkout:[],
 	}),
 	persist:true

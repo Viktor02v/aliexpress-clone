@@ -6,23 +6,23 @@ const route = useRoute()
 
 const windowWidth = ref<number>(0)
 
-const resizeHandler = () => {
+const updateWindowWidth = () => {
   windowWidth.value = window.innerWidth
 }
 
 onMounted(() => {
-  userStore.isLoading = true
-  window.addEventListener('resize', resizeHandler)
+  userStore.isLoading = false
+  window.addEventListener('resize', updateWindowWidth)
 })
 
 onUnmounted(() => {
-  window.removeEventListener('resize', resizeHandler)
+  window.removeEventListener('resize', updateWindowWidth)
 })
 
 watch(
   () => windowWidth.value,
-  () => {
-    if (windowWidth.value >= 768) {
+  (newVal: number, oldVal: number) => {
+    if (newVal >= 768) {
       userStore.isMenuOverlay = false
     }
   }
