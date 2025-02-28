@@ -1,7 +1,7 @@
 import { defineStore } from "pinia";
 
 interface UserStore {
-  cart: Array<{ id: number; name: string; quantity: number }>;
+  cart: Array<{ id: number; name: string;}>;
   isMenuOverlay: boolean;
   isLoading: boolean;
   checkout: Array<{}>;
